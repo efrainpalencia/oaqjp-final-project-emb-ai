@@ -27,6 +27,18 @@ def emotion_detector(text_to_analyse):
             "sadness": emotions.get("sadness", 0),
             "dominant_emotion": dominant_emotion
         }
+
+    elif response.status_code == 400:
+        # If status code is 400, return all values as None
+        return {
+            "anger": None,
+            "disgust": None,
+            "fear": None,
+            "joy": None,
+            "sadness": None,
+            "dominant_emotion": None
+        }
+
     else:
         return {
             "error": f"Request failed with status code {response.status_code}",
